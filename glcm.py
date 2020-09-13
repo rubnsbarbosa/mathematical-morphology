@@ -11,7 +11,7 @@ class GLCM:
         
     def co_matrix_glcm(self):
         """
-        The co occurence matrix with horizontal neighbor - angle 0 [i][j + 1] horizontal
+        The co occurence matrix with horizontal neighbor i.e. angle 0 [i][j + 1] horizontal
         """
         for i in range(0, self.matrix.shape[0]):
             for j in range(0, self.matrix.shape[1]-self.step,self.step):
@@ -21,7 +21,7 @@ class GLCM:
     
     def normalize_co_occurence(self):
         """
-        Normalize the Occurence matrix with values between 0 and 1.
+        Normalize the co occurence matrix with values between 0 and 1.
         """
         init_value, end_value = 0, 1
         self.co_occurrence_normalized = init_value + ((end_value*self.co_occurrence_matrix)/(self.matrix.shape[0]*(self.matrix.shape[1] -1)))
