@@ -38,7 +38,6 @@ class GLCM:
                 
                 self.features[1] += ij*ij
                 self.features[2] += ((i-j) * (i-j) * (ij))
-                self.features[3] += (i*j) * ij
                 self.features[5] += (ij)/(1+pow(i-j,2))
                 self.features[9] += ij* np.log10(ij+ 1e-30)
                 self.features[15] += (ij)/(1+abs(i-j))
@@ -48,7 +47,7 @@ class GLCM:
                 self.features[24] += ij*pow(i-j,2)
                 
         self.features[9] *= -1
-        self.features[12] /= 2
+        self.features[16] /= 2
         self.features[24] /= pow(pow(glcm, 2)-1,2)
         
         return self.features
