@@ -7,10 +7,6 @@ from img_dilatation import dilatation
 from img_segmentation import segmentation_Kmeans
 from img_granulometry import granulometry_opening, granulometry_closing
 
-directory = "./imgs"
-# print(len(directory))
-# im_list = [im for im in os.listdir(directory) if im.endswith('.jpg')]
-# print(len(im_list))
 
 num_centroids = 2
 results = "./results"
@@ -18,6 +14,7 @@ results = "./results"
 for image in glob.glob("img/*.jpg"):
     try:
         file_name, ext = os.path.splitext(image)
+        print(file_name)
         
         # open image
         img = Image.open(image).convert('RGB')
@@ -59,8 +56,7 @@ for image in glob.glob("img/*.jpg"):
 
         plt.subplots_adjust(wspace=.05, left=.01, bottom=.01, right=.99, top=.99)
         plt.savefig(results+file_name)
-        #plt.show()
-        
+        #plt.show()  
     
     except:
         print("error")
