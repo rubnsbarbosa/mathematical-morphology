@@ -1,7 +1,5 @@
 import math
 import numpy as np
-from PIL import Image
-import matplotlib.pyplot as plt
 
 
 def image2gray(image):
@@ -17,8 +15,3 @@ def image2gray(image):
 
     return matrix_gray
 
-
-im = Image.open("img/2.jpg").convert('RGB')
-im_gray = image2gray(im)
-plt.imshow(im_gray, cmap="gray")
-plt.show()
