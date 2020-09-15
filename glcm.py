@@ -10,9 +10,7 @@ class GLCM:
         self.features = np.zeros(num_features+1)
         
     def co_matrix_glcm(self):
-        """
-        The co occurence matrix with horizontal neighbor i.e. angle 0 [i][j + 1] horizontal
-        """
+        # Compute the co occurence matrix using: angle 0 [i][j + 1] horizontal neighbor
         for i in range(0, self.matrix.shape[0]):
             for j in range(0, self.matrix.shape[1]-self.step,self.step):
                 self.co_occurrence_matrix[int(self.matrix[i,j]), int(self.matrix[i,j+1])] += 1
@@ -20,16 +18,12 @@ class GLCM:
         return self.co_occurrence_matrix
     
     def normalize_co_occurence(self):
-        """
-        Normalize the co occurence matrix with values between 0 and 1.
-        """
+        # normalize the co occurence matrix with values between 0 and 1.
         init_value, end_value = 0, 1
         self.co_occurrence_normalized = init_value + ((end_value*self.co_occurrence_matrix)/(self.matrix.shape[0]*(self.matrix.shape[1] -1)))
         
     def extract_features_from_glcm(self):
-        """
-        Extract nine features from GLCM
-        """
+
         glcm = self.co_occurrence_matrix.shape[0]
         
         for i in range(glcm):
